@@ -1,0 +1,59 @@
+Password Manager in Go.
+
+To Install (Install GO, then): 
+$ cd passmgr
+$ go build
+$ sudo cp passmgr /usr/local/bin/
+
+If you want to use a KeyFile, generate one first via: ./passmgr -g ~/.my.key
+
+passmgr version 1.0.0, (c) 2022 Robert Strutts
+
+Usage:
+passmgr [-h] [-dbfile filename] [-k keyfile] [-list] [-add] [...]
+	-h 		Print this help message.
+For use with displaying random passwords:
+	-weekweb	Make a week web page password for screen.
+	-web 		Make a web page password for screen.
+	-gen		Make a password for screen.
+	-crazy		Make a crazy password for screen.
+Accessing the password store:
+	-dbfile		Encrypted SQLite3 Database.
+	-g		Generate a keyfile in path/file.
+	-k		(Optional) Uses this keyfile.	
+For use with editing entries:
+	-delete		Delete an entry.
+	-edit		Edit an entry.
+	-enable		Mark as enabled.
+	-disable	Mark as disabled.
+	-expires	When password is no longer valid.
+	-id		Use only the entry for ID#.
+Creating new entries:
+	-add		Add a new entry.
+	-domain 	Add this domain name.
+	-username	Add this username.
+	-pwd		Add this password.
+For use with listing:
+	-list 		Show all the entries.
+	-getByID	Show the entry with ID#.
+	-getByDoamin	Show the entries with domain name that matches.
+
+Examples:
+passmgr -dbfile ~/.main.db -k ~/.my.key -add -domain "gmail.com" -username "msmith" -pwd "@@S*fg8s^g8ds#afg!78g"
+	Add a new password.
+
+passmgr -dbfile ~/.main.db -k ~/.my.key -list
+	List all passwords.
+
+passmgr -dbfile ~/.main.db -k ~/.my.key -getByDomain -domain "youtube"
+	View entries for a domain name.
+
+passmgr -dbfile ~/.main.db -k ~/.my.key -disable -id 2
+	Disable the entry with the ID of #2.
+
+passmgr -dbfile ~/.main.db -k ~/.my.key -delete -id 2
+	Delete an entry by ID of #2.
+
+passmgr -dbfile ~/.main.db -k ~/.my.key -edit -id 1 -pwd "NewP@330rd"
+	Edit an entry's password with the ID of #1.
+

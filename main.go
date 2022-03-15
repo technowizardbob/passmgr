@@ -13,6 +13,7 @@ import (
 	"github.com/yang3yen/xxtea-go/xxtea"
 
 	"robs/passmgr/db"
+	"robs/passmgr/genkey"
 	"robs/passmgr/makeapwd"
 )
 
@@ -84,6 +85,7 @@ func printRows(results *db.Cred) {
 
 func main() {
 	help := flag.Bool("h", false, "Help Page")
+	generateKey := flag.String("g", "", "key file")
 	weekweb := flag.Bool("weekweb", false, "Generate a week web random Password")
 	web := flag.Bool("web", false, "Generate a random Password")
 	gen := flag.Bool("gen", false, "Generate a strong random Password")
@@ -108,6 +110,11 @@ func main() {
 
 	if *help {
 		usage()
+		return
+	}
+
+	if *generateKey != "" {
+		genkey.MakeKey(*generateKey)
 		return
 	}
 
@@ -243,6 +250,7 @@ For use with displaying random passwords:
 	-crazy		Make a crazy password for screen.
 Accessing the password store:
 	-dbfile		Encrypted SQLite3 Database.
+	-g		Generate a keyfile in path/file.
 	-k		(Optional) Uses this keyfile.	
 For use with editing entries:
 	-delete		Delete an entry.
