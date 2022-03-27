@@ -113,6 +113,27 @@ func main() {
 		return
 	}
 
+	var password string
+
+	if *weekweb {
+		password = makeapwd.MakePass(8, 13)
+		fmt.Println(password)
+	} else if *web {
+		password = makeapwd.MakePass(13, 18)
+		fmt.Println(password)
+	} else if *gen {
+		password = makeapwd.MakePass(15, 24)
+		fmt.Println(password)
+	} else if *crazy {
+		password = makeapwd.MakePass(32, 48)
+		fmt.Println(password)
+	}
+
+	// Just return now as it displayed a new RND password and that was the only Argument given!
+	if password != "" && len(os.Args) == 2 {
+		return
+	}
+
 	if *generateKey != "" {
 		genkey.MakeKey(*generateKey)
 		return
@@ -132,22 +153,6 @@ func main() {
 		new_pass = append(data, pass...)
 	} else {
 		new_pass = pass
-	}
-
-	var password string
-
-	if *weekweb {
-		password = makeapwd.MakePass(8, 13)
-		fmt.Println(password)
-	} else if *web {
-		password = makeapwd.MakePass(13, 18)
-		fmt.Println(password)
-	} else if *gen {
-		password = makeapwd.MakePass(15, 24)
-		fmt.Println(password)
-	} else if *crazy {
-		password = makeapwd.MakePass(32, 48)
-		fmt.Println(password)
 	}
 
 	if *dbfile != "" {
