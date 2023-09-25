@@ -243,7 +243,7 @@ func main() {
 
 func usage() {
 	progName := filepath.Base(os.Args[0])
-	fmt.Printf(`%s version %s, (c) 2022 Robert Strutts
+	fmt.Printf(`%s version %s, (c) 2022 Bob S. (TechnoWizardBob.com)
 
 Usage:
 %s [-h] [-dbfile filename] [-k keyfile] [-list] [-add] [...]

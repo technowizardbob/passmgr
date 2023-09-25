@@ -7,7 +7,7 @@ $ sudo cp passmgr /usr/local/bin/
 
 If you want to use a KeyFile, generate one first via: ./passmgr -g ~/.my.key
 
-passmgr version 1.0.0, (c) 2022 Robert Strutts
+passmgr version 1.0.0, (c) 2022 Bob S. (Tips@TechnoWizardBob.com)
 
 Usage:
 passmgr [-h] [-dbfile filename] [-k keyfile] [-list] [-add] [...]
